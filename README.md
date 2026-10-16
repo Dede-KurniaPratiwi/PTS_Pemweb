@@ -57,7 +57,7 @@ Dataset: Products (DummyJSON).
    }
 ```
    Input: fungsi `fn` dan jeda `delay`. Proses: setiap dipanggil, timer lama dibatalkan dengan `clearTimeout`, lalu timer baru dibuat. Output: fungsi yang baru menjalankan `fn` setelah pengguna berhenti mengetik, jadi request ke API tidak dikirim di setiap huruf.
-   
+
 9. **Bug tersulit:** Bug tersulit yang saya alami adalah ketika judul atau teks status pada elemen halaman tidak mau berubah secara dinamis saat pencarian dilakukan, yang disebabkan oleh selektor DOM yang mengambil elemen sebelum proses render selesai atau fungsi pembaruan teks yang belum dipanggil, lalu ditemukan melalui tab Console pada Developer Tools saat mengecek elemen bernilai null, dan diperbaiki dengan memastikan pemanggilan fungsi pembaruan DOM diletakkan tepat setelah data JSON berhasil diproses serta menggunakan ID atau class elemen yang benar di file app.js.
 10. **Dua perbaikan jika ada waktu seminggu:** Jika diberi waktu satu minggu lagi, dua perbaikan teknis yang akan saya lakukan adalah merancang modul pendaftaran UMKM mandiri yang mengarahkan pembeli langsung ke tautan profil atau Facebook Marketplace milik penjual lokal Pulau Bunyu (sebagai solusi praktis tanpa perlu menarik API Facebook yang dibatasi), serta menambahkan fitur pagination dan filter kategori spesifik agar katalog produk dalam jumlah besar lebih cepat, rapi, dan mudah ditelusuri oleh pengguna.
 
@@ -65,4 +65,4 @@ Dataset: Products (DummyJSON).
 
 | Tanggal | AI/Tool | Tujuan | Prompt/Ringkasan | Bagian Digunakan | Verifikasi/Modifikasi |
 |---|---|---|---|---|---|
-| Oktober 2026 | Gemini & Claude | Membantu kerangka kode, penyesuaian letak struktur, dan koreksi error | Meminta draf awal struktur HTML, CSS, JavaScript, serta bantuan menyesuaikan letak kode yang error | index.html, style.css, app.js, README.md | Seluruh ide, pengujian langsung di browser (Laragon), penyesuaian logika, serta perbaikan error dikerjakan dan diuji secara mandiri. |
+| Oktober 2026 | Gemini & Claude | Konsultasi struktur logika JavaScript, referensi sintaks Fetch API, dan *debugging* error | Meminta referensi penulisan struktur `async/await`, penanganan `try...catch`, serta solusi penanganan error DOM selector | Bantuan referensi sintaks di app.js dan style.css | Seluruh perancangan logika, integrasi data DummyJSON, implementasi fitur NIM, serta pengujian langsung pada Browser (menggunakan DevTools Console & Network tab) dikerjakan secara mandiri. |
