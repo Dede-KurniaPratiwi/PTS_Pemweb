@@ -7,34 +7,63 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>InfoProduk Bunyu</h1>
-    <p>Katalog produk pilihan untuk warga Pulau Bunyu.</p>
-    <p class="identitas">Dede Kurnia Pratiwi | 2440304028 | Teknik Komputer </p>
-    <nav aria-label="Navigasi utama">
-      <a href="#produk">Produk</a>
-      <a href="#form-saran">Usul &amp; Saran</a>
-      <button type="button" id="btn-favorit" aria-expanded="false" aria-controls="favorit">
-        ⭐ Favorit (<span id="jumlah-fav">0</span>)
-      </button>
-    </nav>
+  <header class="topbar">
+    <div class="strip">
+      <div class="strip-inner">
+        <nav class="strip-nav" aria-label="Navigasi utama">
+          <a class="mini" href="#produk">🛍 Produk</a>
+          <button type="button" id="btn-usul" class="mini">✉ Usul &amp; Saran</button>
+          <button type="button" id="btn-favorit" class="mini" aria-expanded="false" aria-controls="favorit">
+            ⭐ Favorit (<span id="jumlah-fav">0</span>)
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Katalog UMKM · Pulau Bunyu, Kalimantan Utara</p>
+        <h1>InfoProduk Bunyu</h1>
+        <p class="tagline">Katalog produk pilihan untuk warga Pulau Bunyu.</p>
+        <p class="identitas">Dede Kurnia Pratiwi | 2440304028 | A1</p>
+
+        <div class="cari" role="search">
+          <label for="input-cari" class="sr-only">Cari produk</label>
+          <input type="search" id="input-cari" placeholder="Cth: Cari nama produk atau jenis barang...">
+          <span id="loading-cari" role="status" aria-live="polite" class="hidden">Mencari...</span>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
-    <section id="pencarian" aria-labelledby="judul-cari">
-      <h2 id="judul-cari">Cari Produk</h2>
-      <label for="input-cari">Cari produk</label>
-      <input type="search" id="input-cari" placeholder="Cth: Cari nama produk atau jenis barang...">
-      <span id="loading-cari" role="status" aria-live="polite" class="hidden">Mencari...</span>
-    </section>
-
     <section id="statistik" aria-labelledby="judul-stat">
       <h2 id="judul-stat">Statistik Singkat</h2>
       <div class="stat-grid">
-        <div class="stat-card">💰 Rata-rata harga: <strong id="stat-rata">-</strong></div>
-        <div class="stat-card">🏆 Harga tertinggi: <strong id="stat-termahal">-</strong></div>
-        <div class="stat-card">📦 Jumlah kategori: <strong id="stat-kategori">-</strong></div>
+        <div class="stat-card">
+          <span class="stat-label">💰 Rata-rata harga</span>
+          <strong id="stat-rata">-</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">🏆 Harga tertinggi</span>
+          <strong id="stat-termahal">-</strong>
+          <span class="stat-nama" id="stat-termahal-nama"></span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">📦 Jumlah kategori</span>
+          <strong id="stat-kategori">-</strong>
+        </div>
       </div>
+    </section>
+
+    <section id="promo" class="hidden" aria-labelledby="judul-promo">
+      <h2 id="judul-promo">Sedang Promo</h2>
+      <div id="grid-promo" class="grid grid-promo"></div>
+    </section>
+
+    <section id="rekomendasi" class="hidden" aria-labelledby="judul-rekom">
+      <h2 id="judul-rekom">Rekomendasi Pilihan</h2>
+      <div id="grid-rekomendasi" class="grid grid-promo"></div>
     </section>
 
     <section id="produk" aria-labelledby="judul-produk">
@@ -62,38 +91,46 @@
       <div id="grid-favorit" class="grid"></div>
     </section>
 
-    <section id="form-saran" aria-labelledby="judul-form">
-      <h2 id="judul-form">Kotak Usul &amp; Saran Produk</h2>
-      <form id="form-usul" novalidate>
-        <div>
-          <label for="nama">Nama (wajib)</label>
-          <input type="text" id="nama" name="nama" aria-describedby="err-nama">
-          <p id="err-nama" class="error-text" role="alert"></p>
-        </div>
+    <dialog id="dialog-usul" aria-labelledby="judul-form">
+      <div id="panel-form">
+        <h2 id="judul-form">Kotak Usul &amp; Saran Produk</h2>
+        <form id="form-usul" novalidate>
+          <div>
+            <label for="nama">Nama (wajib)</label>
+            <input type="text" id="nama" name="nama" aria-describedby="err-nama">
+            <p id="err-nama" class="error-text" role="alert"></p>
+          </div>
 
-        <div>
-          <label for="email">Email (opsional)</label>
-          <input type="email" id="email" name="email" aria-describedby="err-email">
-          <p id="err-email" class="error-text" role="alert"></p>
-        </div>
+          <div>
+            <label for="email">Email (opsional)</label>
+            <input type="email" id="email" name="email" aria-describedby="err-email">
+            <p id="err-email" class="error-text" role="alert"></p>
+          </div>
 
-        <fieldset aria-describedby="err-kategori">
-          <legend>Kategori minat (pilih minimal satu)</legend>
-          <label><input type="checkbox" name="kategori" value="beauty"> Beauty</label>
-          <label><input type="checkbox" name="kategori" value="fragrances"> Fragrances</label>
-          <label><input type="checkbox" name="kategori" value="furniture"> Furniture</label>
-          <label><input type="checkbox" name="kategori" value="groceries"> Groceries</label>
-          <p id="err-kategori" class="error-text" role="alert"></p>
-        </fieldset>
+          <fieldset aria-describedby="err-kategori">
+            <legend>Kategori yang kamu minati (pilih minimal satu)</legend>
+            <div id="daftar-kategori"></div>
+            <p id="err-kategori" class="error-text" role="alert"></p>
+          </fieldset>
 
-        <button type="submit">Kirim Usulan</button>
-        <p id="pesan-sukses" role="status"></p>
-      </form>
-    </section>
+          <div class="aksi">
+            <button type="submit">Kirim Usulan</button>
+            <button type="button" id="btn-batal" class="btn-sekunder">Batal</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="panel-sukses" class="hidden">
+        <p class="centang" aria-hidden="true">✔</p>
+        <h2 id="judul-sukses" tabindex="-1">Usulan diterima</h2>
+        <p id="pesan-sukses"></p>
+        <button type="button" id="btn-tutup-sukses">Tutup</button>
+      </div>
+    </dialog>
   </main>
 
   <footer>
-    <p>Dede Kurnia Pratiwi - 2440304028 | Teknik Komputer </p>
+    <p>Dede Kurnia Pratiwi - 2440304028 | A1</p>
   </footer>
 
   <script src="js/app.js"></script>
