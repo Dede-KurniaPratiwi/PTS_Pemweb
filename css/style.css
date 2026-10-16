@@ -176,4 +176,12 @@ button:hover { background: var(--warna-utama-gelap); }
   color: var(--warna-utama);
 }
 .btn-fav:hover { background: #eef5f2; }
-.btn-fav[aria-pressed="true"] {
+.btn-fav[aria-pressed="true"] 
+
+.btn-fav {
+  margin-top: auto;
+  width: 100%;
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--warna-utama);
+}
