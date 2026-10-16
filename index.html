@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfoProduk Bunyu</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>InfoProduk Bunyu</h1>
+    <p>Katalog produk pilihan untuk warga Pulau Bunyu.</p>
+    <p class="identitas">Dede Kurnia Pratiwi | 2440304028 | Kelas [ISI KELAS]</p>
+    <nav aria-label="Navigasi utama">
+      <a href="#produk">Produk</a>
+      <a href="#form-saran">Usul &amp; Saran</a>
+      <button type="button" id="btn-favorit" aria-expanded="false" aria-controls="favorit">
+        ⭐ Favorit (<span id="jumlah-fav">0</span>)
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="pencarian" aria-labelledby="judul-cari">
+      <h2 id="judul-cari">Cari Produk</h2>
+      <label for="input-cari">Cari produk</label>
+      <input type="search" id="input-cari" placeholder="Cth: Cari nama produk atau jenis barang...">
+      <span id="loading-cari" role="status" aria-live="polite" class="hidden">Mencari...</span>
+    </section>
+
+    <section id="statistik" aria-labelledby="judul-stat">
+      <h2 id="judul-stat">Statistik Singkat</h2>
+      <div class="stat-grid">
+        <div class="stat-card">💰 Rata-rata harga: <strong id="stat-rata">-</strong></div>
+        <div class="stat-card">🏆 Harga tertinggi: <strong id="stat-termahal">-</strong></div>
+        <div class="stat-card">📦 Jumlah kategori: <strong id="stat-kategori">-</strong></div>
+      </div>
+    </section>
+
+    <section id="produk" aria-labelledby="judul-produk">
+      <h2 id="judul-produk">Daftar Produk</h2>
+
+      <div id="loading-state" role="status" aria-live="polite">
+        Sedang memuat data dari server...
+      </div>
+
+      <div id="error-state" class="hidden" role="alert">
+        <p id="error-teks"></p>
+        <button type="button" id="btn-retry">Coba Lagi</button>
+      </div>
+
+      <div id="empty-state" class="hidden">
+        <p>🔍 Produk yang kamu cari tidak ditemukan.</p>
+      </div>
+
+      <div id="grid-produk" class="grid"></div>
+    </section>
+
+    <section id="favorit" class="hidden" aria-labelledby="judul-fav">
+      <h2 id="judul-fav">Produk Favorit</h2>
+      <p id="fav-kosong" class="hidden">Belum ada produk favorit.</p>
+      <div id="grid-favorit" class="grid"></div>
+    </section>
+
+    <section id="form-saran" aria-labelledby="judul-form">
+      <h2 id="judul-form">Kotak Usul &amp; Saran Produk</h2>
+      <form id="form-usul" novalidate>
+        <div>
+          <label for="nama">Nama (wajib)</label>
+          <input type="text" id="nama" name="nama" aria-describedby="err-nama">
+          <p id="err-nama" class="error-text" role="alert"></p>
+        </div>
+
+        <div>
+          <label for="email">Email (opsional)</label>
+          <input type="email" id="email" name="email" aria-describedby="err-email">
+          <p id="err-email" class="error-text" role="alert"></p>
+        </div>
+
+        <fieldset aria-describedby="err-kategori">
+          <legend>Kategori minat (pilih minimal satu)</legend>
+          <label><input type="checkbox" name="kategori" value="beauty"> Beauty</label>
+          <label><input type="checkbox" name="kategori" value="fragrances"> Fragrances</label>
+          <label><input type="checkbox" name="kategori" value="furniture"> Furniture</label>
+          <label><input type="checkbox" name="kategori" value="groceries"> Groceries</label>
+          <p id="err-kategori" class="error-text" role="alert"></p>
+        </fieldset>
+
+        <button type="submit">Kirim Usulan</button>
+        <p id="pesan-sukses" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Dede Kurnia Pratiwi - 2440304028 - Kelas [ISI KELAS]</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
