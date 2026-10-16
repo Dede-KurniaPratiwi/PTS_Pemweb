@@ -3,8 +3,7 @@
 **Nama:** Dede Kurnia Pratiwi
 **NPM:** 2440304028
 **Kelas:** Teknik Komputer
-**Repository:** [link GitHub]
-**Video Demo:** [link video]
+**Repository:** 'https://github.com/Dede-KurniaPratiwi/PTS_Pemweb.git' 
 
 ## 1. Deskripsi Aplikasi
 InfoProduk Bunyu adalah aplikasi web katalog produk dan UMKM lokal Pulau Bunyu yang mengambil data dinamis dari DummyJSON API dan menyaring kategori yang relevan untuk warga. Aplikasi ini dilengkapi fitur pencarian instan dengan debounce, kalkulasi statistik harga dan kategori otomatis, penyimpanan produk favorit menggunakan localStorage, serta formulir usulan interaktif berbasis modal dengan validasi minimal satu kategori pilihan.
@@ -58,7 +57,7 @@ Dataset: Products (DummyJSON).
 ```
    Input: fungsi `fn` dan jeda `delay`. Proses: setiap dipanggil, timer lama dibatalkan dengan `clearTimeout`, lalu timer baru dibuat. Output: fungsi yang baru menjalankan `fn` setelah pengguna berhenti mengetik, jadi request ke API tidak dikirim di setiap huruf.
 
-9. **Bug tersulit:** Bug tersulit yang saya alami adalah ketika judul atau teks status pada elemen halaman tidak mau berubah secara dinamis saat pencarian dilakukan, yang disebabkan oleh selektor DOM yang mengambil elemen sebelum proses render selesai atau fungsi pembaruan teks yang belum dipanggil, lalu ditemukan melalui tab Console pada Developer Tools saat mengecek elemen bernilai null, dan diperbaiki dengan memastikan pemanggilan fungsi pembaruan DOM diletakkan tepat setelah data JSON berhasil diproses serta menggunakan ID atau class elemen yang benar di file app.js.
+9. **Bug tersulit:** Adapun bug tersulit yang saya alami selama pengerjaan proyek PTS ini adalah ketika judul atau teks status pada elemen halaman tidak mau berubah secara dinamis saat pencarian dilakukan. Penyebab utamanya adalah penggunaan selektor DOM yang mengambil elemen sebelum proses penyajian (render) data selesai, atau fungsi pembaruan teks yang belum dipanggil secara tepat. Bug ini berhasil saya lacak melalui tab Console pada Developer Tools saat menemukan adanya elemen bernilai null.   Masalah tersebut diperbaiki dengan memastikan pemanggilan fungsi pembaruan DOM diletakkan tepat setelah data JSON berhasil diproses, serta memastikan penggunaan ID atau class elemen yang sesuai pada file
 10. **Dua perbaikan jika ada waktu seminggu:** Jika diberi waktu satu minggu lagi, dua perbaikan teknis yang akan saya lakukan adalah merancang modul pendaftaran UMKM mandiri yang mengarahkan pembeli langsung ke tautan profil atau Facebook Marketplace milik penjual lokal Pulau Bunyu (sebagai solusi praktis tanpa perlu menarik API Facebook yang dibatasi), serta menambahkan fitur pagination dan filter kategori spesifik agar katalog produk dalam jumlah besar lebih cepat, rapi, dan mudah ditelusuri oleh pengguna.
 
 ## 7. AI Usage Log
