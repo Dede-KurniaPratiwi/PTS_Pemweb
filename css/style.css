@@ -1,0 +1,179 @@
+/* ===== Warna & ukuran (ubah di sini kalau mau ganti gaya) ===== */
+:root {
+  --warna-utama: #1f6f5c;       /* hijau tua */
+  --warna-utama-gelap: #185646;
+  --latar: #faf7f2;             /* krem lembut */
+  --kartu: #ffffff;
+  --teks: #222222;
+  --teks-redup: #555555;
+  --garis: #d9d4c9;
+  --error: #9b1c1c;
+  --sukses: #1b6b3a;
+  --radius: 8px;
+}
+
+/* ===== Dasar ===== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--teks);
+  background: var(--latar);
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2 { line-height: 1.25; margin: 0 0 12px; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.4rem; }
+
+.hidden { display: none !important; }
+
+/* Garis fokus yang jelas untuk pengguna keyboard */
+:focus-visible {
+  outline: 3px solid #b45309;
+  outline-offset: 2px;
+}
+
+/* ===== Tata letak umum ===== */
+header, main, footer {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+main section {
+  margin-bottom: 32px;
+}
+
+/* ===== Header ===== */
+header {
+  border-bottom: 2px solid var(--garis);
+}
+header p { margin: 0 0 6px; color: var(--teks-redup); }
+.identitas { font-size: 0.9rem; }
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+}
+nav a {
+  color: var(--warna-utama);
+  font-weight: 600;
+  padding: 10px 4px;
+}
+
+/* ===== Tombol ===== */
+button {
+  font: inherit;
+  min-height: 48px;
+  padding: 10px 20px;
+  border: 2px solid var(--warna-utama);
+  border-radius: var(--radius);
+  background: var(--warna-utama);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover { background: var(--warna-utama-gelap); }
+
+/* ===== Pencarian ===== */
+#pencarian input[type="search"] {
+  width: 100%;
+  max-width: 600px;
+  min-height: 52px;
+  padding: 10px 14px;
+  font: inherit;
+  border: 2px solid var(--teks-redup);
+  border-radius: var(--radius);
+  background: #fff;
+}
+#loading-cari {
+  margin-left: 10px;
+  color: var(--teks-redup);
+}
+
+/* ===== Statistik ===== */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.stat-card {
+  background: var(--kartu);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.stat-card strong {
+  display: block;
+  font-size: 1.3rem;
+  margin-top: 4px;
+}
+
+/* ===== State: loading, error, kosong ===== */
+#loading-state,
+#empty-state,
+#error-state {
+  padding: 20px;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  background: var(--kartu);
+}
+#error-state {
+  border: 2px solid var(--error);
+  color: var(--error);
+}
+#error-state button {
+  margin-top: 8px;
+  background: #fff;
+  color: var(--error);
+  border-color: var(--error);
+}
+
+/* ===== Grid produk (4 / 2 / 1 kolom) ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Nama class di bawah harus dipakai saat JS membuat kartu */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--kartu);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.card-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #f1eee7;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 14px;
+}
+.card-title { font-size: 1.05rem; font-weight: 600; margin: 0 0 6px; }
+.card-category { color: var(--teks-redup); font-size: 0.9rem; margin: 0 0 6px; }
+.card-price { font-size: 1.2rem; font-weight: 700; margin: 0 0 12px; }
+
+.btn-fav {
+  margin-top: auto;   /* tombol selalu di bagian bawah kartu */
+  width: 100%;
+  background: #fff;
+  color: var(--warna-utama);
+}
+.btn-fav:hover { background: #eef5f2; }
+.btn-fav[aria-pressed="true"] {
